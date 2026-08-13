@@ -21,6 +21,26 @@ codesign --force --deep --sign - "$TARGET" 2>/dev/null || {
   echo "  (pominięto — brak codesign; na własnym Macu zwykle OK)"
 }
 
+echo "→ Uruchamianie razem z macOS..."
+LOGIN_RESULT=$(osascript <<EOF 2>/dev/null || echo "failed"
+tell application "System Events"
+    set targetPath to "$TARGET"
+    repeat with li in login items
+        if path of li is targetPath then
+            return "already"
+        end if
+    end repeat
+    make login item at end with properties {path:targetPath, hidden:false}
+    return "registered"
+end tell
+EOF
+)
+case "$LOGIN_RESULT" in
+  registered) echo "  Dodano do elementów logowania." ;;
+  already)    echo "  Już jest w elementach logowania." ;;
+  *)          echo "  Nie udało się dodać automatycznie — włącz ręcznie w panelu MouseFlip." ;;
+esac
+
 echo ""
 echo "✓ Zainstalowano: $TARGET"
 echo ""
@@ -30,7 +50,6 @@ open "$TARGET"
 echo ""
 echo "Po pierwszym uruchomieniu:"
 echo "  1. Kliknij ikonę myszki w pasku menu (u góry ekranu)"
-echo "  2. Włącz „Uruchamiaj razem z macOS” (jeśli nie włączyło się samo)"
-echo "  3. Ustaw: Mysz = Normalny, Trackpad = Naturalny — raz i zapomnij"
+echo "  2. Sprawdź: Mysz = Normalny, Trackpad = Naturalny, Automatyczne przełączanie = włączone"
 echo ""
-echo "Aplikacja działa w tle. Nie ma ikony w Docku — to normalne dla narzędzi menu bar."
+echo "MouseFlip startuje sam po włączeniu Maca. Nie ma ikony w Docku — to normalne."
