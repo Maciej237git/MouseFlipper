@@ -1,0 +1,356 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* MouseFlipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* MouseFlipApp.swift */; };
+		A10000000000000000000002 /* ScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* ScrollDirection.swift */; };
+		A10000000000000000000003 /* HIDMouseDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* HIDMouseDevice.swift */; };
+		A10000000000000000000004 /* HIDMouseMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000004 /* HIDMouseMonitor.swift */; };
+		A10000000000000000000005 /* ScrollDirectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* ScrollDirectionManager.swift */; };
+		A10000000000000000000006 /* LaunchAtLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000006 /* LaunchAtLoginManager.swift */; };
+		A10000000000000000000007 /* WakeMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000007 /* WakeMonitor.swift */; };
+		A10000000000000000000008 /* MouseFlipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000008 /* MouseFlipViewModel.swift */; };
+		A10000000000000000000009 /* MenuBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000009 /* MenuBarView.swift */; };
+		A1000000000000000000000A /* MouseFlipLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000A /* MouseFlipLogger.swift */; };
+		A1000000000000000000000B /* Color+MouseFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000B /* Color+MouseFlip.swift */; };
+		A1000000000000000000000E /* MouseFlipSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000E /* MouseFlipSettings.swift */; };
+		A1000000000000000000000F /* StatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000F /* StatusCard.swift */; };
+		A10000000000000000000010 /* ScrollSettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000010 /* ScrollSettingsCard.swift */; };
+		A10000000000000000000011 /* StartupSettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* StartupSettingsCard.swift */; };
+		A10000000000000000000012 /* PrivacyFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000012 /* PrivacyFooter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20000000000000000000001 /* MouseFlipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseFlipApp.swift; sourceTree = "<group>"; };
+		A20000000000000000000002 /* ScrollDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollDirection.swift; sourceTree = "<group>"; };
+		A20000000000000000000003 /* HIDMouseDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIDMouseDevice.swift; sourceTree = "<group>"; };
+		A20000000000000000000004 /* HIDMouseMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HIDMouseMonitor.swift; sourceTree = "<group>"; };
+		A20000000000000000000005 /* ScrollDirectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollDirectionManager.swift; sourceTree = "<group>"; };
+		A20000000000000000000006 /* LaunchAtLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginManager.swift; sourceTree = "<group>"; };
+		A20000000000000000000007 /* WakeMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeMonitor.swift; sourceTree = "<group>"; };
+		A20000000000000000000008 /* MouseFlipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseFlipViewModel.swift; sourceTree = "<group>"; };
+		A20000000000000000000009 /* MenuBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarView.swift; sourceTree = "<group>"; };
+		A2000000000000000000000A /* MouseFlipLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseFlipLogger.swift; sourceTree = "<group>"; };
+		A2000000000000000000000B /* Color+MouseFlip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+MouseFlip.swift"; sourceTree = "<group>"; };
+		A2000000000000000000000E /* MouseFlipSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MouseFlipSettings.swift; sourceTree = "<group>"; };
+		A2000000000000000000000F /* StatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCard.swift; sourceTree = "<group>"; };
+		A20000000000000000000010 /* ScrollSettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSettingsCard.swift; sourceTree = "<group>"; };
+		A20000000000000000000011 /* StartupSettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupSettingsCard.swift; sourceTree = "<group>"; };
+		A20000000000000000000012 /* PrivacyFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyFooter.swift; sourceTree = "<group>"; };
+		A2000000000000000000000C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2000000000000000000000D /* MouseFlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MouseFlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A30000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A40000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A40000000000000000000002 /* MouseFlip */,
+				A40000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A40000000000000000000002 /* MouseFlip */ = {
+			isa = PBXGroup;
+			children = (
+				A40000000000000000000004 /* App */,
+				A40000000000000000000005 /* Models */,
+				A40000000000000000000006 /* Services */,
+				A40000000000000000000007 /* ViewModels */,
+				A40000000000000000000008 /* Views */,
+				A40000000000000000000009 /* Utilities */,
+				A2000000000000000000000C /* Info.plist */,
+			);
+			path = MouseFlip;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000D /* MouseFlip.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000004 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000001 /* MouseFlipApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000005 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000002 /* ScrollDirection.swift */,
+				A20000000000000000000003 /* HIDMouseDevice.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000006 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000004 /* HIDMouseMonitor.swift */,
+				A20000000000000000000005 /* ScrollDirectionManager.swift */,
+				A20000000000000000000006 /* LaunchAtLoginManager.swift */,
+				A20000000000000000000007 /* WakeMonitor.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000007 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000008 /* MouseFlipViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000008 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000009 /* MenuBarView.swift */,
+				A2000000000000000000000F /* StatusCard.swift */,
+				A20000000000000000000010 /* ScrollSettingsCard.swift */,
+				A20000000000000000000011 /* StartupSettingsCard.swift */,
+				A20000000000000000000012 /* PrivacyFooter.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A40000000000000000000009 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000A /* MouseFlipLogger.swift */,
+				A2000000000000000000000B /* Color+MouseFlip.swift */,
+				A2000000000000000000000E /* MouseFlipSettings.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A50000000000000000000001 /* MouseFlip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A70000000000000000000003 /* Build configuration list for PBXNativeTarget "MouseFlip" */;
+			buildPhases = (
+				A60000000000000000000001 /* Sources */,
+				A30000000000000000000001 /* Frameworks */,
+				A60000000000000000000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MouseFlip;
+			productName = MouseFlip;
+			productReference = A2000000000000000000000D /* MouseFlip.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A80000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A50000000000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A70000000000000000000001 /* Build configuration list for PBXProject "MouseFlip" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A40000000000000000000001;
+			productRefGroup = A40000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A50000000000000000000001 /* MouseFlip */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A60000000000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A60000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000001 /* MouseFlipApp.swift in Sources */,
+				A10000000000000000000002 /* ScrollDirection.swift in Sources */,
+				A10000000000000000000003 /* HIDMouseDevice.swift in Sources */,
+				A10000000000000000000004 /* HIDMouseMonitor.swift in Sources */,
+				A10000000000000000000005 /* ScrollDirectionManager.swift in Sources */,
+				A10000000000000000000006 /* LaunchAtLoginManager.swift in Sources */,
+				A10000000000000000000007 /* WakeMonitor.swift in Sources */,
+				A10000000000000000000008 /* MouseFlipViewModel.swift in Sources */,
+				A10000000000000000000009 /* MenuBarView.swift in Sources */,
+				A1000000000000000000000A /* MouseFlipLogger.swift in Sources */,
+				A1000000000000000000000B /* Color+MouseFlip.swift in Sources */,
+				A1000000000000000000000E /* MouseFlipSettings.swift in Sources */,
+				A1000000000000000000000F /* StatusCard.swift in Sources */,
+				A10000000000000000000010 /* ScrollSettingsCard.swift in Sources */,
+				A10000000000000000000011 /* StartupSettingsCard.swift in Sources */,
+				A10000000000000000000012 /* PrivacyFooter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A90000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A90000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A90000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MouseFlip/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					IOKit,
+					"-framework",
+					ServiceManagement,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.maciejcybula.MouseFlip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A90000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MouseFlip/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					IOKit,
+					"-framework",
+					ServiceManagement,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.maciejcybula.MouseFlip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A70000000000000000000001 /* Build configuration list for PBXProject "MouseFlip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A90000000000000000000001 /* Debug */,
+				A90000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A70000000000000000000003 /* Build configuration list for PBXNativeTarget "MouseFlip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A90000000000000000000003 /* Debug */,
+				A90000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A80000000000000000000001 /* Project object */;
+}
