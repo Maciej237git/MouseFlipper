@@ -23,6 +23,7 @@
 		A10000000000000000000010 /* ScrollSettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000010 /* ScrollSettingsCard.swift */; };
 		A10000000000000000000011 /* StartupSettingsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* StartupSettingsCard.swift */; };
 		A10000000000000000000012 /* PrivacyFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000012 /* PrivacyFooter.swift */; };
+		A10000000000000000000013 /* MenuBarPanelSizeFixer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000013 /* MenuBarPanelSizeFixer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		A20000000000000000000010 /* ScrollSettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSettingsCard.swift; sourceTree = "<group>"; };
 		A20000000000000000000011 /* StartupSettingsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupSettingsCard.swift; sourceTree = "<group>"; };
 		A20000000000000000000012 /* PrivacyFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyFooter.swift; sourceTree = "<group>"; };
+		A20000000000000000000013 /* MenuBarPanelSizeFixer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarPanelSizeFixer.swift; sourceTree = "<group>"; };
 		A2000000000000000000000C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2000000000000000000000D /* MouseFlip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MouseFlip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				A20000000000000000000009 /* MenuBarView.swift */,
+				A20000000000000000000013 /* MenuBarPanelSizeFixer.swift */,
 				A2000000000000000000000F /* StatusCard.swift */,
 				A20000000000000000000010 /* ScrollSettingsCard.swift */,
 				A20000000000000000000011 /* StartupSettingsCard.swift */,
@@ -229,6 +232,7 @@
 				A10000000000000000000010 /* ScrollSettingsCard.swift in Sources */,
 				A10000000000000000000011 /* StartupSettingsCard.swift in Sources */,
 				A10000000000000000000012 /* PrivacyFooter.swift in Sources */,
+				A10000000000000000000013 /* MenuBarPanelSizeFixer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

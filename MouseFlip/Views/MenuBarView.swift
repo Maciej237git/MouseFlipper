@@ -1,11 +1,16 @@
 import SwiftUI
 
+private enum MenuBarPanelMetrics {
+    static let width: CGFloat = 380
+    static let height: CGFloat = 580
+}
+
 struct MenuBarView: View {
     @ObservedObject var viewModel: MouseFlipViewModel
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 14) {
+        ScrollView(.vertical, showsIndicators: true) {
+            VStack(alignment: .leading, spacing: 16) {
                 header
 
                 if let error = viewModel.lastErrorMessage {
@@ -43,11 +48,16 @@ struct MenuBarView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.top, 4)
             }
-            .padding(.horizontal, 18)
-            .padding(.vertical, 16)
+            .padding(.horizontal, 20)
+            .padding(.vertical, 18)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .frame(width: 380)
+        .frame(width: MenuBarPanelMetrics.width, height: MenuBarPanelMetrics.height)
         .background(Color.mouseFlipBackground)
+        .background(MenuBarPanelSizeFixer(size: NSSize(
+            width: MenuBarPanelMetrics.width,
+            height: MenuBarPanelMetrics.height
+        )))
     }
 
     private var header: some View {

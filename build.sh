@@ -30,6 +30,7 @@ SOURCES=(
   "$ROOT/MouseFlip/Services/WakeMonitor.swift"
   "$ROOT/MouseFlip/ViewModels/MouseFlipViewModel.swift"
   "$ROOT/MouseFlip/Views/MenuBarView.swift"
+  "$ROOT/MouseFlip/Views/MenuBarPanelSizeFixer.swift"
   "$ROOT/MouseFlip/Views/StatusCard.swift"
   "$ROOT/MouseFlip/Views/ScrollSettingsCard.swift"
   "$ROOT/MouseFlip/Views/StartupSettingsCard.swift"
