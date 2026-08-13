@@ -2,7 +2,7 @@ import SwiftUI
 
 private enum MenuBarPanelMetrics {
     static let width: CGFloat = 380
-    static let height: CGFloat = 580
+    static let height: CGFloat = 460
 }
 
 struct MenuBarView: View {
@@ -25,7 +25,6 @@ struct MenuBarView: View {
                 )
 
                 automaticSection
-                scrollSettingsSection
                 startupSection
 
                 Button {
@@ -92,26 +91,11 @@ struct MenuBarView: View {
             }
             .toggleStyle(.switch)
 
-            Text("Ustaw kierunki myszy i gładzika raz — aplikacja sama przełącza scroll po podłączeniu lub odłączeniu myszy.")
+            Text("Mysz → normalny scroll. Trackpad → naturalny. Działa samo po podłączeniu lub odłączeniu myszy.")
                 .font(.system(size: 11))
                 .foregroundStyle(Color.mouseFlipTertiaryText)
                 .fixedSize(horizontal: false, vertical: true)
         }
-    }
-
-    private var scrollSettingsSection: some View {
-        ScrollSettingsCard(
-            mouseDirection: Binding(
-                get: { viewModel.mouseDirection },
-                set: { _ in }
-            ),
-            trackpadDirection: Binding(
-                get: { viewModel.trackpadDirection },
-                set: { _ in }
-            ),
-            onMouseDirectionChange: { viewModel.setMouseDirection($0) },
-            onTrackpadDirectionChange: { viewModel.setTrackpadDirection($0) }
-        )
     }
 
     private var startupSection: some View {
