@@ -152,6 +152,10 @@ final class MouseFlipViewModel: ObservableObject {
         do {
             try launchAtLoginManager.setEnabled(enabled)
             launchAtLogin = launchAtLoginManager.isEnabled
+
+            if enabled && !launchAtLogin {
+                lastErrorMessage = LaunchAtLoginError.registrationFailed.localizedDescription
+            }
         } catch {
             lastErrorMessage = error.localizedDescription
             launchAtLogin = launchAtLoginManager.isEnabled
