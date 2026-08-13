@@ -21,25 +21,48 @@ codesign --force --deep --sign - "$TARGET" 2>/dev/null || {
   echo "  (pominięto — brak codesign; na własnym Macu zwykle OK)"
 }
 
-echo "→ Uruchamianie razem z macOS..."
-LOGIN_RESULT=$(osascript <<EOF 2>/dev/null || echo "failed"
+echo "→ Uruchamianie razem z macOS (LaunchAgent)..."
+USER_ID="$(id -u)"
+LABEL="com.maciejcybula.MouseFlip"
+PLIST="$HOME/Library/LaunchAgents/${LABEL}.plist"
+mkdir -p "$HOME/Library/LaunchAgents"
+cat > "$PLIST" <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>${LABEL}</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/open</string>
+    <string>-a</string>
+    <string>${TARGET}</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+</dict>
+</plist>
+EOF
+launchctl bootout "gui/${USER_ID}/${LABEL}" 2>/dev/null || true
+if launchctl bootstrap "gui/${USER_ID}" "$PLIST" 2>/dev/null; then
+  echo "  LaunchAgent włączony."
+else
+  echo "  LaunchAgent zapisany — suwak w aplikacji też to obsługuje."
+fi
+
+# Usuń stary wpis login items (legacy), jeśli istnieje
+osascript <<EOF 2>/dev/null || true
 tell application "System Events"
     set targetPath to "$TARGET"
     repeat with li in login items
         if path of li is targetPath then
-            return "already"
+            delete li
+            exit repeat
         end if
     end repeat
-    make login item at end with properties {path:targetPath, hidden:false}
-    return "registered"
 end tell
 EOF
-)
-case "$LOGIN_RESULT" in
-  registered) echo "  Dodano do elementów logowania." ;;
-  already)    echo "  Już jest w elementach logowania." ;;
-  *)          echo "  Nie udało się dodać automatycznie — włącz ręcznie w panelu MouseFlip." ;;
-esac
 
 echo ""
 echo "✓ Zainstalowano: $TARGET"

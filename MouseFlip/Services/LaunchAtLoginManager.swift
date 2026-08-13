@@ -1,11 +1,10 @@
-import AppKit
+import Darwin
 import Foundation
 import ServiceManagement
 
 enum LaunchAtLoginError: LocalizedError {
     case registrationFailed
     case unregistrationFailed
-    case automationPermissionRequired
 
     var errorDescription: String? {
         switch self {
@@ -13,24 +12,32 @@ enum LaunchAtLoginError: LocalizedError {
             return "Nie udało się włączyć uruchamiania razem z macOS."
         case .unregistrationFailed:
             return "Nie udało się wyłączyć uruchamiania razem z macOS."
-        case .automationPermissionRequired:
-            return "Zezwól MouseFlip na sterowanie „System Events” w Ustawieniach → Prywatność → Automatyzacja."
         }
     }
 }
 
-/// Registers the app to launch at login.
-/// Uses SMAppService when signed; falls back to login items (works without code signing).
+/// Launch-at-login via LaunchAgent plist — works without code signing or Automation permission.
 final class LaunchAtLoginManager {
+    private let label = "com.maciejcybula.MouseFlip"
+
     private var appPath: String {
         Bundle.main.bundlePath
+    }
+
+    private var plistURL: URL {
+        FileManager.default.homeDirectoryForCurrentUser
+            .appendingPathComponent("Library/LaunchAgents/\(label).plist")
+    }
+
+    private var launchctlDomain: String {
+        "gui/\(getuid())"
     }
 
     var isEnabled: Bool {
         if SMAppService.mainApp.status == .enabled {
             return true
         }
-        return LoginItemsScript.isRegistered(appPath: appPath)
+        return FileManager.default.fileExists(atPath: plistURL.path)
     }
 
     func setEnabled(_ enabled: Bool) throws {
@@ -48,8 +55,9 @@ final class LaunchAtLoginManager {
         }
 
         do {
-            try LoginItemsScript.register(appPath: appPath)
-            MouseFlipLogger.logLaunchAtLogin("Registered via login items")
+            try writeLaunchAgent()
+            try loadLaunchAgent()
+            MouseFlipLogger.logLaunchAtLogin("Registered via LaunchAgent")
         } catch {
             MouseFlipLogger.logLaunchAtLogin("Error: \(error.localizedDescription)")
             throw LaunchAtLoginError.registrationFailed
@@ -58,17 +66,13 @@ final class LaunchAtLoginManager {
 
     private func unregister() throws {
         if SMAppService.mainApp.status == .enabled {
-            do {
-                try SMAppService.mainApp.unregister()
-                MouseFlipLogger.logLaunchAtLogin("Unregistered via SMAppService")
-            } catch {
-                MouseFlipLogger.logLaunchAtLogin("SMAppService unregister error: \(error.localizedDescription)")
-            }
+            try? SMAppService.mainApp.unregister()
         }
 
         do {
-            try LoginItemsScript.unregister(appPath: appPath)
-            MouseFlipLogger.logLaunchAtLogin("Unregistered via login items")
+            try unloadLaunchAgent()
+            try? FileManager.default.removeItem(at: plistURL)
+            MouseFlipLogger.logLaunchAtLogin("Unregistered LaunchAgent")
         } catch {
             MouseFlipLogger.logLaunchAtLogin("Error: \(error.localizedDescription)")
             throw LaunchAtLoginError.unregistrationFailed
@@ -86,82 +90,53 @@ final class LaunchAtLoginManager {
             return false
         }
     }
-}
 
-// MARK: - Login items fallback (no code signing required)
+    private func writeLaunchAgent() throws {
+        let agentsDirectory = plistURL.deletingLastPathComponent()
+        try FileManager.default.createDirectory(at: agentsDirectory, withIntermediateDirectories: true)
 
-private enum LoginItemsScript {
-    static func isRegistered(appPath: String) -> Bool {
-        let script = """
-        tell application "System Events"
-            repeat with li in login items
-                if path of li is "\(escaped(appPath))" then
-                    return true
-                end if
-            end repeat
-            return false
-        end tell
-        """
+        let plist: [String: Any] = [
+            "Label": label,
+            "ProgramArguments": ["/usr/bin/open", "-a", appPath],
+            "RunAtLoad": true,
+        ]
 
-        guard let result = run(script), result.booleanValue else {
-            return false
-        }
-        return true
+        let data = try PropertyListSerialization.data(
+            fromPropertyList: plist,
+            format: .xml,
+            options: 0
+        )
+        try data.write(to: plistURL, options: .atomic)
     }
 
-    static func register(appPath: String) throws {
-        let script = """
-        tell application "System Events"
-            set targetPath to "\(escaped(appPath))"
-            repeat with li in login items
-                if path of li is targetPath then
-                    return "ok"
-                end if
-            end repeat
-            make login item at end with properties {path:targetPath, hidden:false}
-            return "ok"
-        end tell
-        """
-
-        guard run(script) != nil else {
-            throw LaunchAtLoginError.automationPermissionRequired
-        }
+    private func loadLaunchAgent() throws {
+        try? runLaunchctl(["bootout", "\(launchctlDomain)/\(label)"])
+        try runLaunchctl(["bootstrap", launchctlDomain, plistURL.path])
     }
 
-    static func unregister(appPath: String) throws {
-        let script = """
-        tell application "System Events"
-            set targetPath to "\(escaped(appPath))"
-            repeat with li in login items
-                if path of li is targetPath then
-                    delete li
-                    exit repeat
-                end if
-            end repeat
-            return "ok"
-        end tell
-        """
-
-        guard run(script) != nil else {
-            throw LaunchAtLoginError.automationPermissionRequired
-        }
+    private func unloadLaunchAgent() throws {
+        try runLaunchctl(["bootout", "\(launchctlDomain)/\(label)"])
     }
 
-    private static func escaped(_ value: String) -> String {
-        value.replacingOccurrences(of: "\\", with: "\\\\")
-            .replacingOccurrences(of: "\"", with: "\\\"")
-    }
+    private func runLaunchctl(_ arguments: [String]) throws {
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/bin/launchctl")
+        process.arguments = arguments
 
-    private static func run(_ source: String) -> NSAppleEventDescriptor? {
-        var error: NSDictionary?
-        guard let script = NSAppleScript(source: source) else { return nil }
-        let result = script.executeAndReturnError(&error)
+        let pipe = Pipe()
+        process.standardOutput = pipe
+        process.standardError = pipe
 
-        if let error {
-            MouseFlipLogger.logLaunchAtLogin("AppleScript error: \(error)")
-            return nil
+        try process.run()
+        process.waitUntilExit()
+
+        guard process.terminationStatus == 0 else {
+            let output = String(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: .utf8) ?? ""
+            throw NSError(
+                domain: "LaunchAtLoginManager",
+                code: Int(process.terminationStatus),
+                userInfo: [NSLocalizedDescriptionKey: output.trimmingCharacters(in: .whitespacesAndNewlines)]
+            )
         }
-
-        return result
     }
 }

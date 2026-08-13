@@ -108,9 +108,8 @@ struct MenuBarView: View {
         StartupSettingsCard(
             launchAtLogin: Binding(
                 get: { viewModel.launchAtLogin },
-                set: { _ in }
-            ),
-            onToggle: { viewModel.setLaunchAtLogin($0) }
+                set: { viewModel.setLaunchAtLogin($0) }
+            )
         )
     }
 

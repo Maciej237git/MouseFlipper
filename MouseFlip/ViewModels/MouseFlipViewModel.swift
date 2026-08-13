@@ -7,7 +7,7 @@ final class MouseFlipViewModel: ObservableObject {
     @Published var automaticSwitchingEnabled: Bool
     @Published var mouseDirection: ScrollDirection
     @Published var trackpadDirection: ScrollDirection
-    @Published private(set) var launchAtLogin: Bool
+    @Published var launchAtLogin: Bool
     @Published private(set) var currentDirection: ScrollDirection?
     @Published var lastErrorMessage: String?
 
@@ -148,17 +148,15 @@ final class MouseFlipViewModel: ObservableObject {
 
     func setLaunchAtLogin(_ enabled: Bool) {
         lastErrorMessage = nil
+        let previous = launchAtLogin
+        launchAtLogin = enabled
 
         do {
             try launchAtLoginManager.setEnabled(enabled)
             launchAtLogin = launchAtLoginManager.isEnabled
-
-            if enabled && !launchAtLogin {
-                lastErrorMessage = LaunchAtLoginError.registrationFailed.localizedDescription
-            }
         } catch {
+            launchAtLogin = previous
             lastErrorMessage = error.localizedDescription
-            launchAtLogin = launchAtLoginManager.isEnabled
         }
     }
 
