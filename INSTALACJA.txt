@@ -1,0 +1,28 @@
+MouseFlip — pierwsze uruchomienie (macOS)
+==========================================
+
+Pobrane z internetu (GitHub) = macOS blokuje zwykły dwuklik.
+To NORMALNE dla niepodpisanej aplikacji. Nie jest to wirus.
+
+INSTALACJA
+----------
+1. Rozpakuj ZIP
+2. Przeciągnij MouseFlip.app do folderu Aplikacje
+3. PIERWSZE URUCHOMIENIE — wybierz JEDNO:
+
+   A) Klik PRAWY na MouseFlip.app → Otwórz → Otwórz
+      (nie zwykły dwuklik!)
+
+   B) Ustawienia systemowe → Prywatność i bezpieczeństwo
+      → na dole „Otwórz mimo to” (po nieudanym dwukliku)
+
+   C) Terminal:
+      xattr -d com.apple.quarantine /Applications/MouseFlip.app
+      open /Applications/MouseFlip.app
+
+4. Kliknij ikonę myszki w pasku menu (u góry ekranu)
+5. Włącz „Uruchamiaj razem z macOS”
+
+Wymagania: macOS 13+, Intel lub Apple Silicon (build pod architekturę autora).
+
+Po pierwszym uruchomieniu działa normalnie — bez terminala.

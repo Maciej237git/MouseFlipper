@@ -60,15 +60,19 @@ Jeśli ktoś wysłał Ci paczkę:
 ./share.sh   # buduje i tworzy build/MouseFlip.zip
 ```
 
-Albo pobierz release z GitHub (jeśli dodany).
+Albo pobierz **Release** z GitHub: [MouseFlipper Releases](https://github.com/Maciej237git/MouseFlipper/releases)
+
+> **⚠️ Pobranie z GitHub = macOS zablokuje zwykły dwuklik.**  
+> To nie wirus — aplikacja nie ma certyfikatu Apple Developer ID (osobiste narzędzie, nie App Store).  
+> **Pierwsze uruchomienie:** klik **prawy** na `MouseFlip.app` → **Otwórz** → **Otwórz**  
+> Albo w terminalu: `xattr -d com.apple.quarantine /Applications/MouseFlip.app`
 
 **Kolega robi:**
 
-1. Rozpakowuje ZIP **albo** klonuje repo i uruchamia `./install.sh`
-2. Przy **pierwszym uruchomieniu** (gdy macOS blokuje aplikację):  
-   **klik prawy** na `MouseFlip.app` → **Otwórz** → **Otwórz**  
-   (zwykły dwuklik przy niepodpisanej aplikacji często nie zadziała)
-3. W panelu włącza **Uruchamiaj razem z macOS**
+1. Pobiera `MouseFlip.zip` z Releases → rozpakowuje
+2. Przeciąga `MouseFlip.app` do **Aplikacje**
+3. **Klik prawy → Otwórz** (nie zwykły dwuklik!)
+4. W panelu (ikona myszki u góry) włącza **Uruchamiaj razem z macOS**
 
 ### Różne procesory (Intel vs Apple Silicon)
 

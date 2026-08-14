@@ -17,6 +17,7 @@ fi
 cp -R "$SOURCE_APP" "$TARGET"
 
 echo "→ Podpis ad-hoc (Gatekeeper)..."
+xattr -cr "$TARGET"
 codesign --force --deep --sign - "$TARGET" 2>/dev/null || {
   echo "  (pominięto — brak codesign; na własnym Macu zwykle OK)"
 }
